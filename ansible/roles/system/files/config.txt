@@ -1,0 +1,25 @@
+#https://www.raspberrypi.org/documentation/configuration/config-txt/video.md
+
+hdmi_force_hotplug=1
+disable_overscan=1
+hdmi_force_mode=1
+# Force the monitor to HDMI mode so that sound will be sent over HDMI cable
+hdmi_drive=2
+# Set monitor mode to DMT
+hdmi_group=1
+# Set monitor resolution to 1024x768 XGA 60Hz (HDMI_DMT_XGA_60)
+hdmi_mode=16
+# Make display smaller to stop text spilling off the screen
+
+# Enable audio (loads snd_bcm2835)
+dtparam=audio=on
+
+[pi4]
+# Enable DRM VC4 V3D driver on top of the dispmanx display stack
+dtoverlay=vc4-fkms-v3d
+max_framebuffers=2
+
+[all]
+#dtoverlay=vc4-fkms-v3d
+framebuffer_depth=32
+framebuffer_ignore_alpha=1
