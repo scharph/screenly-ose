@@ -253,3 +253,19 @@
   file:
     path: /var/swap
     state: absent
+
+
+- name: Copy config.txt 
+  copy:
+    src: config.txt
+    dest: /boot/config.txt
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Reboot at midnight
+  cron:
+    name: "a job for reboot"
+    minute: "0"
+    hour: "0"
+    job: "/sbin/shutdown -r now"

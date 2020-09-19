@@ -73,12 +73,6 @@ EOF
     fi
   fi
 
-  echo && read -p "Would you like to install the WoTT agent to help you manage security of your Raspberry Pi? (y/N)" -n 1 -r -s WOTT && echo
-  if [ "$WOTT" = 'y' ]; then
-      curl -s https://packagecloud.io/install/repositories/wott/agent/script.deb.sh | sudo bash
-      sudo apt install wott-agent
-  fi
-
   echo && read -p "Do you want Screenly to manage your network? This is recommended for most users because this adds features to manage your network. (Y/n)" -n 1 -r -s NETWORK && echo
 
   echo && read -p "Would you like to perform a full system upgrade as well? (y/N)" -n 1 -r -s UPGRADE && echo
@@ -136,10 +130,10 @@ fi
 if [ -z "${REPOSITORY}" ]; then
   if [ "$WEB_UPGRADE" = false ]; then
     set -x
-    REPOSITORY=${1:-https://github.com/screenly/screenly-ose.git}
+    REPOSITORY=${1:-https://github.com/scharph/screenly-ose.git}
   else
     set -e
-    REPOSITORY=https://github.com/screenly/screenly-ose.git
+    REPOSITORY=https://github.com/scharph/screenly-ose.git
   fi
 fi
 
@@ -205,6 +199,15 @@ if [ "$WEB_UPGRADE" = false ]; then
   set +x
 else
   set +e
+fi
+
+echo "set hostname"
+
+read -p "Enter new hostname: " -n 1 -r -s HOSTNAME
+
+if [ "$HOSTNAME" != "" ]; then
+  sudo /sbin/sethostname -b "$HOSTNAME"
+  echo "Changed hostname."
 fi
 
 echo "Installation completed."
