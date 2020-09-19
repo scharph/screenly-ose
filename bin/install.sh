@@ -206,7 +206,7 @@ echo "set hostname"
 read -p "Enter new hostname: " -n 1 -r -s HOSTNAME
 
 if [ "$HOSTNAME" != "" ]; then
-  sudo /bin/sethostname -b "$HOSTNAME"
+  sudo /bin/hostname -b "$HOSTNAME"
   echo "Changed hostname."
 fi
 
