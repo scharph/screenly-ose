@@ -269,3 +269,7 @@
     minute: "0"
     hour: "0"
     job: "/sbin/shutdown -r now"
+
+- name: Set timezone to Europe/Vienna
+  timezone:
+    name: Europe/Vienna
