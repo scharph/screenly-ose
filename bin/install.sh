@@ -13,8 +13,7 @@ if [ "$INSTALL" != 'y' ]; then
   exit 1
 fi
 
-export DOCKER_TAG="production"
-BRANCH="production"
+BRANCH="wimmer-dirnberger"
     
 EXTRA_ARGS="--skip-tags enable-ssl"
 
