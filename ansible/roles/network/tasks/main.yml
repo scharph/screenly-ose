@@ -41,4 +41,7 @@
     owner: root
     group: root
     mode: 0755
+    
+- name: Unblock Wifi
+  - command: rfkill unblock 0 
 
