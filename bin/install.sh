@@ -64,26 +64,20 @@ sudo chown -R pi:pi /home/pi
 
 echo -e "Screenly version: $(git rev-parse --abbrev-ref HEAD)@$(git rev-parse --short HEAD)\n$(lsb_release -a)" > ~/version.md
 
-if [ "$WEB_UPGRADE" = false ]; then
-  set +x
-else
-  set +e
-fi
+set +x
 
-echo "set hostname"
-
-read -p "Enter new hostname: " -n 1 -r -s HOSTNAME
+echo -n "Enter new hostname: "
+read HOSTNAME
 
 if [ "$HOSTNAME" != "" ]; then
   sudo /bin/hostname -b "$HOSTNAME"
-  echo "Changed hostname."
+  echo "Changed hostname to $HOSTNAME"
 fi
 
 echo "Installation completed."
 
-if [ "$WEB_UPGRADE" = false ]; then
-  read -p "You need to reboot the system for the installation to complete. Would you like to reboot now? (y/N)" -n 1 -r -s REBOOT && echo
-  if [ "$REBOOT" == 'y' ]; then
-    sudo reboot
-  fi
+read -p "You need to reboot the system for the installation to complete. Would you like to reboot now? (y/N)" -n 1 -r -s REBOOT && echo
+if [ "$REBOOT" == 'y' ]; then
+  sudo reboot
 fi
+
