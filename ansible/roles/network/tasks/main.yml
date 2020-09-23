@@ -43,5 +43,5 @@
     mode: 0755
     
 - name: Unblock Wifi
-  - command: rfkill unblock 0 
+  command: rfkill unblock 0 
 
