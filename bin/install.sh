@@ -70,8 +70,10 @@ echo -n "Enter new hostname: "
 read HOSTNAME
 
 if [ "$HOSTNAME" != "" ]; then
-  sudo /bin/hostname -b "$HOSTNAME"
+  sudo hostnamectl set-hostname "$HOSTNAME"
   echo "Changed hostname to $HOSTNAME"
+else 
+  echo "Hostname unchanged "
 fi
 
 echo "Installation completed."
