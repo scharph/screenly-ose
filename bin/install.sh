@@ -86,8 +86,6 @@ esac
       EXTRA_ARGS=("--skip-tags" "system-upgrade")
   fi
 
-  
-
 elif [ "$WEB_UPGRADE" = true ]; then
   if [ -z "${BRANCH}" ]; then
     if [ "$BRANCH_VERSION" = "latest" ]; then
