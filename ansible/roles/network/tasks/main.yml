@@ -13,7 +13,7 @@
   command: systemctl disable screenly-net-watchdog.timer
   when: screenly_network_manager_exist
 
-- name: Remove network manger and watchdog
+- name: Remove network manager and watchdog
   file:
     state: absent
     path: "/usr/sbin/{{ item }}"
